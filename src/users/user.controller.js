@@ -2,7 +2,7 @@ import { response, request } from "express";
 import bcryptjs from 'bcryptjs';
 import Usuario from './user.model.js';
 
-const usuarioPost = async (req, res) => {
+const userPost = async (req, res) => {
 
     const { username, correo, contraseña, nombre, apellido } = req.body;
     const usuario = new Usuario({ username, correo, contraseña, nombre, apellido });
@@ -10,7 +10,7 @@ const usuarioPost = async (req, res) => {
     const salt = bcryptjs.genSaltSync();
     usuario.contraseña = bcryptjs.hashSync(contraseña, salt);
 
-    // Guardar datos
+  
     await usuario.save();
     console.log('Tu usuario se ha registrado correctamente');
 
@@ -28,7 +28,7 @@ const usuarioPost = async (req, res) => {
 
 }
 
-const usuarioPut = async (req, res) => {
+const userPut = async (req, res) => {
     try {
         const idUsuario = req.user._id;
         const { _id, contraseña: nuevaContraseña, ...usuarioActualizar } = req.body;
@@ -58,4 +58,4 @@ const usuarioPut = async (req, res) => {
     }
 };
 
-export { usuarioPost, usuarioPut };
+export { userPost, userPut };

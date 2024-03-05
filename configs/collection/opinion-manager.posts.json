@@ -2,9 +2,9 @@
   "_id": {
     "$oid": "65e5543627284ff10eb61c77"
   },
-  "title": "Goty del año 2023",
+  "title": "Futbol",
   "category": "VideoJuegos",
-  "text": "Baldur's Gate 3 es el elegido por la prensa especializada y público como el mejor juego del presente año",
+  "text": "FIFA es mucho mejor que el Pes",
   "author_id": {
     "$oid": "65e5530527284ff10eb61c6d"
   },
@@ -18,9 +18,9 @@
   "_id": {
     "$oid": "65e5551e27284ff10eb61c7a"
   },
-  "title": "Anime del año 2023",
-  "category": "Anime",
-  "text": "Cyberpunk edgerunners es consagrado como el anime del año 2023",
+  "title": "El mejor jugador del mundo",
+  "category": "jugador",
+  "text": "Messi es el mejor",
   "author_id": {
     "$oid": "65e5532627284ff10eb61c71"
   },

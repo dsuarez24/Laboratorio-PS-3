@@ -1,7 +1,7 @@
 import Usuario from '../users/user.model.js';
 import zxcvbn from 'zxcvbn';
 
-const correoExiste = async (correo = '') => {
+const emailExists = async (correo = '') => {
     try {
         const correoExiste = await Usuario.findOne({ correo });
         if (correoExiste) {
@@ -12,7 +12,7 @@ const correoExiste = async (correo = '') => {
     }
 }
 
-const nombreUsuarioExiste = async (nombreUsuario = '') => {
+const userNameExists = async (nombreUsuario = '') => {
     try {
         const nombreUsuarioExiste = await Usuario.findOne({ nombreUsuario });
         if (nombreUsuarioExiste) {
@@ -23,7 +23,7 @@ const nombreUsuarioExiste = async (nombreUsuario = '') => {
     }
 }
 
-const validarContrasena = async (contrasena = '') => {
+const validatePassword = async (contrasena = '') => {
     const resultado = zxcvbn(contrasena);
 
     if (resultado.score < 2) {
@@ -34,7 +34,7 @@ const validarContrasena = async (contrasena = '') => {
     }
 };
 
-const existeUsuarioPorId = async (id = '') => {
+const existUserById = async (id = '') => {
     try {
         const existeUsuarioPorId = await Usuario.findById(id);
         if (!existeUsuarioPorId) {
@@ -45,4 +45,4 @@ const existeUsuarioPorId = async (id = '') => {
     }
 };
 
-export { correoExiste, nombreUsuarioExiste, validarContrasena, existeUsuarioPorId };
+export { emailExists, userNameExists, validatePassword, existUserById };

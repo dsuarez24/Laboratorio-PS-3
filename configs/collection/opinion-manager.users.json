@@ -2,11 +2,11 @@
   "_id": {
     "$oid": "65e5530527284ff10eb61c6d"
   },
-  "username": "dsuarez",
-  "mail": "dsuarez@kinal.edu.gt",
+  "username": "srodriguez",
+  "mail": "srodriguez@kinal.edu.gt",
   "password": "$2a$10$rcM2N6/SzVjEIRX0zqji/.e0.hInv.RKNzLt393K/tAshcPsPWd32",
-  "firstname": "Diego",
-  "lastname": "Suarez",
+  "firstname": "Samuel",
+  "lastname": "rodriguez",
   "status": true,
   "__v": 0
 },
@@ -14,11 +14,11 @@
   "_id": {
     "$oid": "65e5532627284ff10eb61c71"
   },
-  "username": "srodriguez",
-  "mail": "srodriguez@kinal.edu.gt",
+  "username": "dsuarez",
+  "mail": "dsuarez@kinal.edu.gt",
   "password": "$2a$10$gwDtJNUytzxekE3sve50YudJU3iQE1eSjYrpoausWI/94MiRvxy1a",
-  "firstname": "Anderson",
-  "lastname": "Rodriguez",
+  "firstname": "Diego",
+  "lastname": "Suarez",
   "status": true,
   "__v": 0
 }]

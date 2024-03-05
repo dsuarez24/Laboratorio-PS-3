@@ -1,50 +1,50 @@
 import { Router } from "express";
 import { check } from "express-validator";
 
-// Middlewares y Ayudantes
-import { validarCampos, validarAutorDePublicacion } from "../middlewares/validar-campos.js";
+// middlewares & helpers
+import { validateFields, validateAuthorToPost } from "../middlewares/validar-campos.js";
 import { validarJWT } from "../middlewares/validar-jwt.js";
-import { publicacionExistente } from "../helpers/posts-validations.js";
+import { existingPost } from "../helpers/posts-validations.js";
 
-// Controlador
-import { crearPublicacion, actualizarPublicacion, eliminarPublicacion, publicacionesFeed, detallesPublicacion } from "./posts.controller.js";
+// controlador
+import { createPosts, updatePosts, deletePost, feedPost, postDetails } from "./posts.controller.js";
 
 
 const router = Router();
 
-router.get('/', publicacionesFeed);
+router.get('/', feedPost);
 
 router.get('/:postId',
     [
-        check("postId", "El ID no tiene un formato válido de MongoDB").isMongoId(),
-        check("postId").custom(publicacionExistente),
-        validarCampos,
-    ], detallesPublicacion);
+        check("postId", "The id is not a valid MongoDB format").isMongoId(),
+        check("postId").custom(existingPost),
+        validateFields,
+    ], postDetails);
 
 router.post('/',
     validarJWT,
     [
-        check("title", "Campo obligatorio").not().isEmpty(),
+        check("title", "Obligatory field").not().isEmpty(),
         check("category"),
         check("text"),
-        validarCampos,
-    ], crearPublicacion);
+        validateFields,
+    ], createPosts);
 
 router.put('/:id', validarJWT,
     [
-        check("id", "El ID no tiene un formato válido de MongoDB").isMongoId(),
-        check("id").custom(publicacionExistente),
-        validarCampos,
-        validarAutorDePublicacion,
-    ], actualizarPublicacion);
+        check("id", "The id is not a valid MongoDB format").isMongoId(),
+        check("id").custom(existingPost),
+        validateFields,
+        validateAuthorToPost,
+    ], updatePosts);
 
 
 router.delete('/:id', validarJWT,
     [
-        check("id", "El ID no tiene un formato válido de MongoDB").isMongoId(),
-        check("id").custom(publicacionExistente),
-        validarCampos,
-        validarAutorDePublicacion,
-    ], eliminarPublicacion);
+        check("id", "The id is not a valid MongoDB format").isMongoId(),
+        check("id").custom(existingPost),
+        validateFields,
+        validateAuthorToPost,
+    ], deletePost);
 
 export default router;

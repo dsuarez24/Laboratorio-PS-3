@@ -1,12 +1,12 @@
 import { validationResult } from "express-validator";
-import Publicaciones from "../posts/posts.model.js";
-import Comentarios from "../comments/comments.model.js";
+import Posts from "../posts/posts.model.js";
+import Comments from "../comments/comments.model.js";
 
-const validarCampos = (req, res, next) => {
+const validateFields = (req, res, next) => {
     try {
-        const errores = validationResult(req);
-        if (!errores.isEmpty()) {
-            return res.status(400).json(errores);
+        const error = validationResult(req);
+        if (!error.isEmpty()) {
+            return res.status(400).json(error);
         }
     } catch (error) {
         throw error
@@ -15,44 +15,44 @@ const validarCampos = (req, res, next) => {
     next();
 }
 
-const validarAutorDePublicacion = async (req, res, next) => {
-    const idPublicacion = req.params.id;
-    const idUsuario = req.user.id;
+const validateAuthorToPost = async (req, res, next) => {
+    const postId = req.params.id;
+    const userId = req.user.id;
 
     try {
-        const publicacion = await Publicaciones.findById(idPublicacion);
+        const post = await Posts.findById(postId);
 
-        if (publicacion.author_id.toString() !== idUsuario) {
-            return res.status(403).json({ error: 'No eres el autor de esta publicación' });
+        if (post.author_id.toString() !== userId) {
+            return res.status(403).json({ error: 'You are not the author of this post' });
         }
 
-        req.publicacion = publicacion;
+        req.post = post;
 
         next();
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'Error Interno del Servidor' });
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 };
 
-const validarAutorDeComentario = async (req, res, next) => {
-    const idComentario = req.params.commentId;
-    const idUsuario = req.user.id;
+const validateAuthorToComment = async (req, res, next) => {
+    const commentId = req.params.commentId;
+    const userId = req.user.id;
 
     try {
-        const comentarios = await Comentarios.findById(idComentario);
+        const comments = await Comments.findById(commentId);
 
-        if (comentarios.author_id.toString() !== idUsuario) {
-            return res.status(403).json({ error: 'No eres el autor de este comentario' });
+        if (comments.author_id.toString() !== userId) {
+            return res.status(403).json({ error: 'You are not the author of this comment' });
         }
-        req.comentario = comentarios;
+        req.comment = comments;
 
         next();
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'Error Interno del Servidor' });
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 };
 
 
-export { validarCampos, validarAutorDePublicacion, validarAutorDeComentario }
+export { validateFields, validateAuthorToPost, validateAuthorToComment }
