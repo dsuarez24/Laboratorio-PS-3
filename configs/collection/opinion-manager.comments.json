@@ -1,0 +1,28 @@
+[{
+  "_id": {
+    "$oid": "65e555bb27284ff10eb61c95"
+  },
+  "postId": {
+    "$oid": "65e5543627284ff10eb61c77"
+  },
+  "text": "Muy buen juego la verdad es el mejor del año se lo merecia",
+  "author_id": {
+    "$oid": "65e5532627284ff10eb61c71"
+  },
+  "status": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e5561127284ff10eb61ca7"
+  },
+  "postId": {
+    "$oid": "65e5551e27284ff10eb61c7a"
+  },
+  "text": "Mi personaje favorito era david y el episodio que mas me gusto fue el capitulo 4",
+  "author_id": {
+    "$oid": "65e5530527284ff10eb61c6d"
+  },
+  "status": true,
+  "__v": 0
+}]

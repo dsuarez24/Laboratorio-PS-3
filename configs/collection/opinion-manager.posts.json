@@ -1,0 +1,32 @@
+[{
+  "_id": {
+    "$oid": "65e5543627284ff10eb61c77"
+  },
+  "title": "Goty del año 2023",
+  "category": "VideoJuegos",
+  "text": "Baldur's Gate 3 es el elegido por la prensa especializada y público como el mejor juego del presente año",
+  "author_id": {
+    "$oid": "65e5530527284ff10eb61c6d"
+  },
+  "state": true,
+  "creation_date": {
+    "$date": "2024-03-04T04:55:18.661Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e5551e27284ff10eb61c7a"
+  },
+  "title": "Anime del año 2023",
+  "category": "Anime",
+  "text": "Cyberpunk edgerunners es consagrado como el anime del año 2023",
+  "author_id": {
+    "$oid": "65e5532627284ff10eb61c71"
+  },
+  "state": true,
+  "creation_date": {
+    "$date": "2024-03-04T04:59:10.782Z"
+  },
+  "__v": 0
+}]
