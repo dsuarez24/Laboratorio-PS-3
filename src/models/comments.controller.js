@@ -11,11 +11,12 @@ const createComment = async (req, res) => {
         const post = await Posts.findOne({ _id: postId });
 
         const comment = new Comment({
-            postId, text, author_id: userId,
+            postId,
+            text,
+            author_id: userId,
         });
 
         await comment.save();
-
 
         const postAuthor = await User.findOne({ _id: post.author_id });
         const commentAuthor = await User.findOne({ _id: comment.author_id });
@@ -32,17 +33,15 @@ const createComment = async (req, res) => {
                 comment: comment.text,
                 author: commentAuthor.username,
             }
-
         };
 
-        res.status(201).json({
-            data
-        });
+        res.status(201).json({ data });
     } catch (error) {
         console.error(error);
         res.status(500).json('Internal Server Error');
     }
-}
+};
+
 const deleteComment = async (req, res) => {
     const commentId = req.params.commentId;
     try {
@@ -58,27 +57,22 @@ const deleteComment = async (req, res) => {
         console.error(error);
         res.status(500).json('Internal Server Error');
     }
-
-}
-
+};
 
 const updateComment = async (req, res) => {
     const commentId = req.params.commentId;
     const { _id, author_id, ...rest } = req.body;
 
     try {
-        await Comment.findByIdAndUpdate(commentId, rest)
+        await Comment.findByIdAndUpdate(commentId, rest);
 
-        const comment = await Comment.findOne({ _id: commentId })
+        const comment = await Comment.findOne({ _id: commentId });
 
-        res.status(200).json({
-            comment
-        });
+        res.status(200).json({ comment });
     } catch (error) {
         console.error(error);
         res.status(500).json('Internal Server Error');
     }
-}
+};
 
-
-export { createComment, deleteComment, updateComment }
+export { createComment, deleteComment, updateComment };
